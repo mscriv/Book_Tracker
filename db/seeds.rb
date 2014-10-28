@@ -5,9 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-books = Book.create([
-		{ title: 'History'}, {title: 'Biology'}, {title: 'Literature'},
-		{ title: 'Mathematics'}, { title: 'Music Theory'}, { title: 'Computer Science'},
-		{ title: 'Sociology'}, {title: 'Chemistry'}
-	])
- 
+	require 'faker'
+
+		5.times do |b|
+        book = Book.create!(author: Faker::Name.name, title: Faker::Company.name)
+
+	end

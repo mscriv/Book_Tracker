@@ -4,8 +4,10 @@
   <strong>Title:</strong>
   <%= @book.title %>
 </p>
+<div>
+  <%= image_tag @book.poster_url.to_s %>
 
-<p>
+</div>
   <strong>Author:</strong>
   <%= @book.author %>
 </p>
