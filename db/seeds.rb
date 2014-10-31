@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 	require 'faker'
 
-		5.times do |b|
-        book = Book.create!(author: Faker::Name.name, title: Faker::Company.name)
+		100.times do |b|
+        book = Book.create!(author: Faker::Name.name, title: Faker::Company.name, remote_poster_url: 'http://lorempixel.com/400/200/technics/Dummy-Text/')
 
 	end
