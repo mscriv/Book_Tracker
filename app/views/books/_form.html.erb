@@ -21,6 +21,10 @@
     <%= f.text_field :author %>
   </div>
   <div class="field">
+    <%= f.label :user_id %>
+    <%= f.select :user_id, User.all.collect {|user| [user.name, user.id]} %>
+  </div>
+  <div class="field">
     <%= f.label :poster %><br>
     <%= f.file_field :poster %>
   <div class="actions">
