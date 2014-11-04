@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141103214439) do
+ActiveRecord::Schema.define(version: 20141104200437) do
 
   create_table "audios", force: true do |t|
     t.string   "title"
