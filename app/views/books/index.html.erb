@@ -14,7 +14,7 @@
     <% @books.each do |book| %>
       <tr>
         <td><%= book.title %></td>
-        <td><%= book.author %></i></td>
+        <td><%= book.author %></td>
         <td><%= image_tag book.poster_url(:thumb).to_s %></td>
         <td><i class="fi-plus large""></i><%= link_to 'Show', book %></td>
         <td><i class="fi-pencil large"></i><%= link_to 'Edit', edit_book_path(book) %></td>
