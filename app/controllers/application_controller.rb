@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
-  def sigined_in
+  def signed_in
     current_user == 'true'
   end
 
