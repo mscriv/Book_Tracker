@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   root 'session#welcome'
   post 'signin', to: 'session#signin'
+  delete 'signout', to: 'session#signout'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

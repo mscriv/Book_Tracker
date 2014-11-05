@@ -4,9 +4,11 @@
   <p><a class="btn btn-primary btn=lg" href="#" role="button">Get started...</a></p>
 </div>
 
-<% if !current_user %>
-  <%= form_tag signin_path, class: 'form' do %>
-    <%= text_field_tag 'email', nil, placeholder: 'Enter your email' %>
-    <%=  submit_tag "Sign in", class: 'btn btn-sm' %>
+<% if current_user %>
+    <%= link_to "Signout", signout_path, method: :delete %>
+   <% else %>
+    <%= form_tag signin_path, class: 'form' do %>
+        <%= text_field_tag 'email', nil, placeholder: 'Enter your email' %>
+        <%=  submit_tag "Sign in", class: 'btn btn-sm' %>
     <% end %>
-<% end %>
+ <% end %>
