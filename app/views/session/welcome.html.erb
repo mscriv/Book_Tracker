@@ -1,14 +1,16 @@
 <div class="jumbotron">
   <h1>Welcome<%= " " + current_user.name if current_user %></h1>
-  <p>Upload books and manage them here</p>
-  <p><a class="btn btn-primary btn=lg" href="#" role="button">Get started...</a></p>
+  <h4>Upload books and manage them here!</h4>
+  <p><%= link_to 'Get started...', books_path, class: 'radius button tiny' %></p>
 </div>
 
 <% if current_user %>
-    <%= link_to "Signout", signout_path, method: :delete %>
+    <%= link_to "Signout", signout_path, class: 'radius button alert tiny', method: :delete %>
    <% else %>
     <%= form_tag signin_path, class: 'form' do %>
         <%= text_field_tag 'email', nil, placeholder: 'Enter your email' %>
-        <%=  submit_tag "Sign in", class: 'btn btn-sm' %>
+        <%=  submit_tag "Sign in", class: 'radius button tiny' %>
     <% end %>
  <% end %>
+
+
