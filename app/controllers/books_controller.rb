@@ -1,6 +1,12 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
+
+  def search
+    @books = Book.for_user(current_user).where('title like ?', "%#{params[:search_query]}")
+    render :template => 'books/index'
+  end
+
   # GET /books
   # GET /books.json
   def index

@@ -1,4 +1,10 @@
 <h1>Listing books</h1>
+
+<%= form_tag search_books_path, classa: 'form' do %>
+    <%= text_field_tag "search_query", nil, placeholder: 'Search text' %>
+    <%= submit_tag "Search", class: 'radius button tiny' %>
+    <% end %>
+
 <%= paginate @books %>
 <table>
   <thead>

@@ -1,18 +1,34 @@
 class SessionController < ApplicationController
-  skip_before_action :authenticate, only: [:welcome, :signin]
+  skip_before_action :authenticate, only: [:welcome, :signin, :signup]
 
   def welcome
-end
+  end
+
+  def signup
+  user = User.new(name: params[:name],
+                  email: params[:email],
+                  password: params[:password],
+                  password_confirmation: params[:password_confirmation])
+    if user.save
+      session[:user_id] = user.id
+      flash[:notice] = 'You have successfully signed up.'
+    else
+      flash[:error] = "We were unable to sign you up. #{user.errors.full_messages.join('. ')}."
+
+    end
+
+    redirect_to root_path
+  end
 
   def signin
-    user = User.find_by email: params[:email]
+    user = User.find_by(email: params[:email]).try(:authenticate, params[:password])
 
     if user
       session[:user_id] = user.id
       flash[:notice] = 'You have signed in'
     else
       session[:user_id] = nil
-      flash[:error] = 'No user found with that email.'
+      flash[:error] = 'Unable to login with those credentials'
     end
     redirect_to root_path
   end

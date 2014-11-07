@@ -5,10 +5,15 @@ Rails.application.routes.draw do
 
   resources :books
 
+   collection do
+     post 'search', to: 'books#search'
+   end
+
+
   root 'session#welcome'
   post 'signin', to: 'session#signin'
   delete 'signout', to: 'session#signout'
-
+  post 'signup', to: 'session#signup'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
