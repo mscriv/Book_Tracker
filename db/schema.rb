@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141105165143) do
+ActiveRecord::Schema.define(version: 20141112140941) do
 
   create_table "audios", force: true do |t|
     t.string   "title"
@@ -37,7 +37,8 @@ ActiveRecord::Schema.define(version: 20141105165143) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "role",       limit: 25, default: "user"
+    t.string   "role",            limit: 25, default: "user"
+    t.string   "password_digest"
   end
 
 end
