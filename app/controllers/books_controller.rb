@@ -3,7 +3,7 @@ class BooksController < ApplicationController
 
 
   def search
-    @books = Book.for_user(current_user).where('title like ?', "%#{params[:search_query]}")
+    @books = Book.for_user(current_user).where('title like ?', "%#{params[:search_query]}").order(params[:sort]).page(params[:page]).per(5)
     render :template => 'books/index'
   end
 
