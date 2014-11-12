@@ -1,7 +1,6 @@
     <div class="jumbotron">
       <h1>Welcome<%= " " + current_user.name if current_user %></h1>
       <h4>Upload books and manage them here!</h4>
-      <p><%= link_to 'Get started...', books_path, class: 'radius button tiny' %></p>
     </div>
     <p>First time here?<%= link_to 'Sign up now!', signup_path %></p>
 

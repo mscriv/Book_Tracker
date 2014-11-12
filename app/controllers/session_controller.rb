@@ -24,11 +24,12 @@ class SessionController < ApplicationController
     if user
       session[:user_id] = user.id
       flash[:notice] = 'You have signed in'
+      redirect_to books_path
     else
       session[:user_id] = nil
       flash[:error] = 'Unable to login with those credentials'
+      redirect_to root_path
     end
-    redirect_to root_path
   end
 
   def signout
