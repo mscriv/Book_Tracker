@@ -16,13 +16,12 @@ class SessionController < ApplicationController
       flash[:error] = "We were unable to sign you up. #{user.errors.full_messages.join('. ')}."
 
     end
+  redirect_to root_path
 
-    redirect_to root_path
   end
 
   def signin
     user = User.find_by(email: params[:email]).try(:authenticate, params[:password])
-
     if user
       session[:user_id] = user.id
       flash[:notice] = 'You have signed in'
