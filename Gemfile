@@ -9,7 +9,7 @@ gem 'kaminari'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 gem 'faker'
-gem 'unf'
+
 gem 'foundation-icons-sass-rails'
 gem 'bcrypt', '~> 3.1.9'
 
