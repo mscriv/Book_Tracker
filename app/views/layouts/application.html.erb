@@ -12,9 +12,10 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+
     <header>
       <%= render 'layouts/navigation' %>
-      <div class="side-nav">
+      <div>
         <% if current_user %>
             Hello, <%= current_user.name %>.
             <%= link_to "Sign Out", signout_path("current"), method: "delete" %>
