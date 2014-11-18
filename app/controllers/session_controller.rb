@@ -19,18 +19,18 @@ class SessionController < ApplicationController
 
   end
 
-  def signin
-    user = User.find_by(email: params[:email]).try(:authenticate, params[:password])
-    if user
+  def create
+    user = User.find_by_email(params[:email])
+    if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      flash[:notice] = 'You have signed in'
+      flash[:notice] = "Logged in"
       redirect_to books_path
     else
-      session[:user_id] = nil
-      flash[:error] = 'Unable to login with those credentials'
-      redirect_to root_path
+      flash.now.alert = "Email or password is invalid"
+      render "new"
     end
   end
+
 
   def signout
     session[:user_id] = nil
