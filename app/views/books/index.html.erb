@@ -1,11 +1,14 @@
-<h1>Listing books</h1>
+
 <div class="container">
-<%= form_tag search_books_path, class: 'form' do %>
-    <%= text_field_tag "search_query", nil, placeholder: 'Search text' %>
-    <%= submit_tag "Search", class: 'radius button tiny' %>
-    <% end %>
+  <%= form_tag search_books_path, class: 'form' do %>
+      <%= text_field_tag "search_query", nil, placeholder: 'Search text' %>
+      <%= submit_tag "Search", class: 'radius button tiny' %>
+  <% end %>
 </div>
+
 <div>
+<h3>Listing books</h3>
+
 <%= paginate @books %>
 <table>
   <thead>

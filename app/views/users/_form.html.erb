@@ -1,32 +1,11 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+<h2>Please sign up</h2>
+<div class="form">
+  <%= simple_form_for @user do |form| %>
+      <%= form.input :name, label: false, placeholder: 'Name', autofocus: true %>
+      <%= form.input :email, label: false, placeholder: 'Email Address' %>
+      <%= form.input :password, label: false, placeholder: 'Password' %>
+      <%= form.input :password_confirmation, label: false, placeholder: 'Password Confirmation' %>
+      <%= form.button :submit, 'Sign up', class: 'large radius button [secondary success alert];'  %>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-    <div class='field'>
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-    </div>
-    <div class='field'>
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation %>
-    </div>
-  <div class="actions">
-    <div class="actions"><%= submit_tag "Sign up" %></div>
-<% end %>
+</div>
