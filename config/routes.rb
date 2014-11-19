@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users, :session
+  resources :users, :sessions
 
   #get 'welcome/index'
 
@@ -11,9 +11,11 @@ Rails.application.routes.draw do
    end
 
   #root 'welcome#index'
-  root 'session#welcome'
-  get 'signout', to: 'session#signout', as: 'signout'
+  root 'sessions#welcome'
   get 'signup', to: 'users#new', as: 'signup'
+  get 'signin', to: 'sessions#new', as: 'signin'
+  get 'signout', to: 'sessions#destroy', as: 'signout'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,5 +1,5 @@
-class SessionController < ApplicationController
-  skip_before_action :authenticate, only: [:welcome, :signin, :signup]
+class SessionsController < ApplicationController
+  skip_before_action :authenticate, only: [:welcome,  :signin, :signup]
 
   def welcome
   end
@@ -37,4 +37,6 @@ class SessionController < ApplicationController
     flash[:warning] = 'You have signed out!'
     redirect_to root_path
   end
- end
+end
+
+
