@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :require_admin
+  before_action :require_admin, only: [:show, :index, :edit, :update, :destroy]
 
 
   # GET /users
@@ -30,8 +30,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'Thank you for signing up.' }
-        format.json { render :show, status: :created, location: @user }
+        session[:user_id] = @user.id
+        format.html { redirect_to books_path, notice: 'Thank you for signing up.' }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -64,19 +64,24 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
+  helper_method :require_admin
+
   def require_admin
-    unless current_user.admin?
+    if current_user && !current_user.admin?
       flash[:error] = "Not Authorized"
       redirect_to root_url # halts request cycle
-      end
     end
+  else
+  end
+    # Use callbacks to share common setup or constraints between actions.
+
     def set_user
       @user = User.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :role)
     end
 end

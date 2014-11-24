@@ -17,13 +17,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def req_admin
-    if current_user.role == 'admin'
-      return true
-    else
-      redirect_to root_path
-    end
-  end
   def signed_in
     current_user == 'true'
   end

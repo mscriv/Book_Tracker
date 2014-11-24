@@ -3,9 +3,9 @@
 
 <li class="name"><%= link_to 'Books', books_path %></li>
 <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
-<% if current_user && current_user.admin? %>
+<% if @current_user && @current_user.role == 'admin' %>
 <li class="name"><%= link_to 'Users', users_path %></li>
     <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
-<% else %>
-    flash[:notice] = "Not Authorized"
+	<% else %>
 <% end %>
+
